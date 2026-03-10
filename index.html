@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Joy Grimes — Dani Joy Art | AI-Assisted Art Pioneer Since 2016</title>
+  <meta name="description" content="Daniel Joy Grimes (formerly Dani Joy Art) — AI-assisted artist since 2016. Exhibited at NeurIPS 2018-2019 and CVPR 2024 AI Art Galleries. Pioneer of Multi-Modal Neural Network (MMNN) art and Computational Muralism.">
+  <meta name="keywords" content="Daniel Joy Grimes, Dani Joy, Dani Joy Art, AI art, NeurIPS, CVPR, computational muralism, MMNN art, Visual Synthesizer, generative AI, Stable Diffusion, GAN art, DeepDream">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Daniel Joy Grimes — AI-Assisted Art Pioneer Since 2016">
+  <meta property="og:description" content="Formerly Dani Joy Art. Exhibited at NeurIPS and CVPR AI Art Galleries. Pioneer of Multi-Modal Neural Network art and Computational Muralism.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.danijoy.com">
+  
+  <!-- Canonical + Identity Bridge -->
+  <link rel="canonical" href="https://www.danijoy.com">
+  
+  <!-- Schema.org structured data for SEO identity bridging -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Joy Grimes",
+    "alternateName": ["Dani Joy", "Dani Joy Art"],
+    "url": "https://www.danijoy.com",
+    "sameAs": [
+      "https://visual-synthesizer.com",
+      "https://x.com/visual_synth",
+      "https://www.instagram.com/visual.synthesizer.art/",
+      "https://github.com/Visual-Synthesizer/",
+      "https://www.artstation.com/daniel-joy-grimes",
+      "https://www.behance.net/danieljoygrimes",
+      "https://medium.com/the-ai-art-corner/dani-joy-and-the-art-of-neuromancy-ba13c54c12ac",
+      "https://medium.com/the-ai-art-corner/dani-joy-af00f017959e",
+      "https://thecvf-art.com/project/daniel-joy-grimes/",
+      "https://www.aiartonline.com/community/215/",
+      "https://www.aiartonline.com/community-2019/dani-joy/",
+      "https://www.youtube.com/watch?v=qenhHExwNIQ"
+    ],
+    "jobTitle": "Generative AI Engineer & Computational Artist",
+    "knowsAbout": ["AI-assisted art", "Computational Muralism", "Multi-Modal Neural Network art", "Stable Diffusion", "GAN training", "prompt engineering"],
+    "description": "AI-assisted artist since 2016, exhibited at NeurIPS (2018-2019) and CVPR (2024) AI Art Galleries. Pioneer of MMNN art and Computational Muralism."
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --fg: #e8e4df;
+      --fg-dim: #8a8580;
+      --accent: #c4a882;
+      --accent-bright: #e2c9a6;
+      --rule: rgba(196, 168, 130, 0.15);
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Instrument Sans', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* === GRAIN OVERLAY === */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === HEADER === */
+    header {
+      padding: 6rem 0 4rem;
+      position: relative;
+    }
+
+    .header-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--fg);
+      margin-bottom: 0.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    h1 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .header-sub {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--fg-dim);
+      margin-top: 1rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .header-sub a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.3s;
+    }
+
+    .header-sub a:hover {
+      border-color: var(--accent);
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--rule);
+      margin: 3rem 0;
+    }
+
+    /* === INTRO === */
+    .intro {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .intro p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--fg);
+      margin-bottom: 1.25rem;
+      max-width: 680px;
+    }
+
+    .intro p .dim {
+      color: var(--fg-dim);
+    }
+
+    /* === SECTIONS === */
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    /* === EXHIBITIONS === */
+    .exhibition-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .exhibition-item {
+      display: grid;
+      grid-template-columns: 5rem 1fr auto;
+      gap: 1.5rem;
+      align-items: baseline;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.3s;
+    }
+
+    .exhibition-item:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .exhibition-year {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--fg-dim);
+    }
+
+    .exhibition-title {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .exhibition-title a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .exhibition-title a:hover {
+      color: var(--accent-bright);
+      border-color: var(--accent);
+    }
+
+    .exhibition-detail {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--fg-dim);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* === PRESS / FEATURES === */
+    .feature-card {
+      display: block;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--accent);
+      background: rgba(196, 168, 130, 0.04);
+    }
+
+    .feature-card-source {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--fg);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card-desc {
+      font-size: 0.85rem;
+      color: var(--fg-dim);
+      line-height: 1.6;
+    }
+
+    /* === ABOUT === */
+    .about-text p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--fg);
+      margin-bottom: 1.25rem;
+      max-width: 680px;
+    }
+
+    /* === LINKS === */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .link-block {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .link-block:hover {
+      border-color: var(--accent);
+      background: rgba(196, 168, 130, 0.04);
+    }
+
+    .link-block-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .link-block-title {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .link-block-url {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--fg-dim);
+      margin-top: 0.25rem;
+    }
+
+    /* === FOOTER === */
+    footer {
+      padding: 4rem 0 3rem;
+      border-top: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--fg);
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--fg-dim);
+      line-height: 1.7;
+    }
+
+    .footer-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      header { padding: 4rem 0 2.5rem; }
+      .container { padding: 0 1.25rem; }
+
+      .exhibition-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 1rem 0;
+      }
+
+      .exhibition-detail {
+        text-align: left;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-tag">AI-Assisted Art &middot; Since 2016</div>
+      <h1>Daniel Joy Grimes</h1>
+      <h1><em>formerly Dani Joy Art</em></h1>
+      <div class="header-sub">
+        Computational Artist &middot; Generative AI Engineer &middot; Grass Valley, CA<br>
+        Now at <a href="https://visual-synthesizer.com" target="_blank" rel="noopener">visual-synthesizer.com</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="divider"></div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="container intro">
+    <p>
+      I began working with AI as an artistic medium in 2016, starting with DeepDream and Style Transfer&mdash;<a href="https://www.youtube.com/watch?v=qenhHExwNIQ" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule);">documenting the process on YouTube by 2017</a>&mdash;before moving into training my own Generative Adversarial Networks by 2018. I was among the first 400 users of Stable Diffusion, contributed to the Simulacra Aesthetics dataset, and coined the term <em>Multi-Modal Neural Network (MMNN) art</em>.
+    </p>
+    <p>
+      My practice, which I call <em>Computational Muralism</em>, merges 15+ years of traditional fine art&mdash;oil painting, airbrush, figure drawing, concept art&mdash;with cutting-edge generative AI pipelines. The work is rooted in a simple belief: <span class="dim">don't try to beat AI, merge with it.</span>
+    </p>
+    <p class="dim" style="font-size: 0.85rem;">
+      This domain was my original portfolio under the name Dani Joy Art. All current work lives at <a href="https://visual-synthesizer.com" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule);">visual-synthesizer.com</a>.
+    </p>
+  </div>
+
+  <!-- EXHIBITIONS -->
+  <section class="container reveal">
+    <div class="section-label">Exhibitions &amp; Juried Shows</div>
+    <div class="exhibition-list">
+      <div class="exhibition-item">
+        <span class="exhibition-year">2024</span>
+        <span class="exhibition-title"><a href="https://thecvf-art.com/project/daniel-joy-grimes/" target="_blank" rel="noopener">CVPR AI Art Gallery</a></span>
+        <span class="exhibition-detail">MMNN Art, Seattle</span>
+      </div>
+      <div class="exhibition-item">
+        <span class="exhibition-year">2019</span>
+        <span class="exhibition-title"><a href="https://www.aiartonline.com/community-2019/dani-joy/" target="_blank" rel="noopener">NeurIPS AI Art Gallery</a></span>
+        <span class="exhibition-detail">as Dani Joy, Vancouver</span>
+      </div>
+      <div class="exhibition-item">
+        <span class="exhibition-year">2018</span>
+        <span class="exhibition-title"><a href="https://www.aiartonline.com/community/215/" target="_blank" rel="noopener">NeurIPS AI Art Gallery &mdash; <em>Metamers</em></a></span>
+        <span class="exhibition-detail">as Dani Joy, Montr&eacute;al</span>
+      </div>
+      <div class="exhibition-item">
+        <span class="exhibition-year">2017</span>
+        <span class="exhibition-title"><a href="https://www.youtube.com/watch?v=qenhHExwNIQ" target="_blank" rel="noopener">AI-Assisted Drawings</a></span>
+        <span class="exhibition-detail">early process videos, YouTube</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- NOTABLE WORK -->
+  <section class="container reveal">
+    <div class="section-label">Notable Work</div>
+    <div class="about-text">
+      <p>
+        <strong>Pamblo Project</strong> &mdash; Created the first visual representation of Chief Pamblo in collaboration with the Nevada City Rancheria Nisenan Tribe through CHIRP's Visibility Through Art Initiative. Developed custom LoRA models and extensive digital painting from a historically sparse dataset.
+      </p>
+      <p>
+        <strong>MMNN Art (2022&ndash;2023)</strong> &mdash; World-first Multi-Modal Neural Network artworks achieving resolutions up to 1 billion pixels, suitable for mural-scale installations up to 26&times;14 feet at photographic resolution. Exhibited at CVPR 2024.
+      </p>
+      <p>
+        <strong>Commercial AI Art</strong> &mdash; Work has appeared in luxury fashion campaigns and national television advertising. Clients engage me for bespoke AI model development, concept art, and gigapixel canvas production.
+      </p>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- PRESS / FEATURES -->
+  <section class="container reveal">
+    <div class="section-label">Press &amp; Features</div>
+
+    <a class="feature-card" href="https://medium.com/the-ai-art-corner/dani-joy-and-the-art-of-neuromancy-ba13c54c12ac" target="_blank" rel="noopener">
+      <div class="feature-card-source">The AI Art Corner &middot; Medium</div>
+      <div class="feature-card-title">Dani Joy and The Art of Neuromancy</div>
+      <div class="feature-card-desc">In-depth interview on the journey from traditional painting to AI-assisted art, the influence of Kasparov's cyborg chess philosophy, and building a custom deep learning server on Arch Linux.</div>
+    </a>
+
+    <a class="feature-card" href="https://medium.com/cuevagallery/dani-joy-and-the-art-of-neuromancy-5afcac0f9c23" target="_blank" rel="noopener">
+      <div class="feature-card-source">Cueva Gallery &middot; Medium</div>
+      <div class="feature-card-title">Explorations of AI Art &mdash; Episode 22</div>
+      <div class="feature-card-desc">Feature on synthesizing traditional and digital art practices, with work exhibited alongside the early AI art community at Cueva Gallery.</div>
+    </a>
+
+    <a class="feature-card" href="https://medium.com/the-ai-art-corner/dani-joy-af00f017959e" target="_blank" rel="noopener">
+      <div class="feature-card-source">The AI Art Corner &middot; AI Artists Directory</div>
+      <div class="feature-card-title">Dani Joy &mdash; Artist Profile</div>
+      <div class="feature-card-desc">Directory listing in the AI Artists Directory, previously featured on Cueva Gallery.</div>
+    </a>
+
+    <a class="feature-card" href="https://www.ubaseo.org/pamblo" target="_blank" rel="noopener">
+      <div class="feature-card-source">CHIRP / UBASEO</div>
+      <div class="feature-card-title">Pamblo: Remembering a Forgotten Leader</div>
+      <div class="feature-card-desc">The first visual representation of Chief Pamblo, created in collaboration with the Nevada City Rancheria Nisenan Tribe through CHIRP's Visibility Through Art Initiative.</div>
+    </a>
+
+    <a class="feature-card" href="https://www.theunion.com/entertainment/activities-and-events/maasai-life-and-culture-art-exhibit-on-display-in-nevada-city/article_bac99289-bb83-5975-8c63-fd585d90e086.html" target="_blank" rel="noopener">
+      <div class="feature-card-source">The Union &middot; Nevada City</div>
+      <div class="feature-card-title">Maasai Life and Culture Art Exhibit</div>
+      <div class="feature-card-desc">Coverage of art exhibit on display in Nevada City.</div>
+    </a>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- LINKS -->
+  <section class="container reveal">
+    <div class="section-label">Current &amp; Archive</div>
+    <div class="links-grid">
+      <a class="link-block" href="https://visual-synthesizer.com" target="_blank" rel="noopener">
+        <span class="link-block-label">Current Studio</span>
+        <span class="link-block-title">Visual Synthesizer</span>
+        <span class="link-block-url">visual-synthesizer.com</span>
+      </a>
+      <a class="link-block" href="https://thecvf-art.com/project/daniel-joy-grimes/" target="_blank" rel="noopener">
+        <span class="link-block-label">CVPR 2024</span>
+        <span class="link-block-title">AI Art Gallery Entry</span>
+        <span class="link-block-url">thecvf-art.com</span>
+      </a>
+      <a class="link-block" href="https://www.aiartonline.com/community/215/" target="_blank" rel="noopener">
+        <span class="link-block-label">NeurIPS 2018</span>
+        <span class="link-block-title">Metamers &mdash; AI Art Gallery</span>
+        <span class="link-block-url">aiartonline.com</span>
+      </a>
+      <a class="link-block" href="https://www.aiartonline.com/community-2019/dani-joy/" target="_blank" rel="noopener">
+        <span class="link-block-label">NeurIPS 2019</span>
+        <span class="link-block-title">AI Art Gallery</span>
+        <span class="link-block-url">aiartonline.com</span>
+      </a>
+      <a class="link-block" href="https://www.artstation.com/daniel-joy-grimes" target="_blank" rel="noopener">
+        <span class="link-block-label">Portfolio</span>
+        <span class="link-block-title">ArtStation</span>
+        <span class="link-block-url">artstation.com</span>
+      </a>
+      <a class="link-block" href="https://www.behance.net/danieljoygrimes" target="_blank" rel="noopener">
+        <span class="link-block-label">Portfolio</span>
+        <span class="link-block-title">Behance</span>
+        <span class="link-block-url">behance.net</span>
+      </a>
+      <a class="link-block" href="https://github.com/Visual-Synthesizer/" target="_blank" rel="noopener">
+        <span class="link-block-label">Code</span>
+        <span class="link-block-title">GitHub</span>
+        <span class="link-block-url">github.com/Visual-Synthesizer</span>
+      </a>
+      <a class="link-block" href="https://www.instagram.com/visual.synthesizer.art/" target="_blank" rel="noopener">
+        <span class="link-block-label">Social</span>
+        <span class="link-block-title">Instagram</span>
+        <span class="link-block-url">@visual.synthesizer.art</span>
+      </a>
+      <a class="link-block" href="https://x.com/visual_synth" target="_blank" rel="noopener">
+        <span class="link-block-label">Social</span>
+        <span class="link-block-title">X / Twitter</span>
+        <span class="link-block-url">@visual_synth</span>
+      </a>
+      <a class="link-block" href="https://www.youtube.com/watch?v=qenhHExwNIQ" target="_blank" rel="noopener">
+        <span class="link-block-label">Video &middot; 2017</span>
+        <span class="link-block-title">YouTube &mdash; AI Drawings</span>
+        <span class="link-block-url">youtube.com</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-name">Daniel Joy Grimes</div>
+      <div class="footer-note">
+        Formerly Dani Joy Art &middot; AI-assisted art since 2016<br>
+        Grass Valley, California<br><br>
+        For inquiries: <a href="https://visual-synthesizer.com/contact" target="_blank" rel="noopener">visual-synthesizer.com/contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll reveal -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
